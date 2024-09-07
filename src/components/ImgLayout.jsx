@@ -8,9 +8,9 @@ const ImgLayout = ({type, imgSrc, title, text}) => {
                         <img src={`${imgSrc}`} alt={`${title} 이미지`} />
                     </div>
                     <div className="r-area">
-                        <strong>
+                        <h3>
                             {title}
-                        </strong>
+                        </h3>
                         <p>
                             {text}
                         </p>
@@ -21,9 +21,9 @@ const ImgLayout = ({type, imgSrc, title, text}) => {
                     ? (
                         <>
                         <div className="r-area">
-                            <strong>
+                            <h3>
                                 {title}
-                            </strong>
+                            </h3>
                             <p>
                                 {text}
                             </p>

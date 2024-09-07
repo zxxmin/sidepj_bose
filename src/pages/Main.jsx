@@ -1,20 +1,25 @@
 import { useEffect, useRef, useState } from 'react';
 import Header from "../components/Header"
 import ImgLayout from '../components/ImgLayout';
+import InfoBose from '../components/InfoBose';
+import SellImg from '../components/SellImg';
 
 const Main = () => {
     const [prevScrollTop, setPrevScrollTop] = useState(0);
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-
+    const [selectedColor, setSelectedColor] = useState('Diamond 60Th Edition');
+    
     const mainSectionRef = useRef(null);
     const forElementRef = useRef(null);
     const loveElementRef = useRef(null);
     const feelsElementRef = useRef(null);
-
+    const subSectionRef = useRef(null);
     
-
+    
+    
     useEffect(() => {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
         const onScroll = () => {
             const scrollTop = document.documentElement.scrollTop;
 
@@ -64,6 +69,15 @@ const Main = () => {
                 }
             }
             setPrevScrollTop(scrollTop);
+
+            if (subSectionRef.current) {
+                const subSectionBottom = subSectionRef.current.getBoundingClientRect().bottom + window.scrollY;
+                const subSectionDiv = subSectionRef.current.querySelector('div');
+
+                scrollTop+windowHeight >= subSectionBottom
+                    ? subSectionDiv.classList.add('active')
+                    : subSectionDiv.classList.remove('active');
+            }
         
         }
 
@@ -72,11 +86,40 @@ const Main = () => {
         return () => {
             window.removeEventListener('scroll', onScroll);
         }
-    }, [prevScrollTop, windowWidth, windowHeight])
+    }, [prevScrollTop])
 
     const infoSectionStyle = {
-        marginTop: `${windowWidth + windowHeight}px`
+        marginTop: `${window.innerWidth + window.innerHeight}px`
     }
+
+    const infoBoseData = [
+        {
+            title: 'The clearest phone calls',
+            text: 'No more “huh?” when you try to say “hello.” Use one bud or two for the clearest, most-natural sounding phone calls.',
+            cls: 'call'
+        },
+        {
+            title: 'Touch controls',
+            text: 'Play/pause music, crank the volume, cycle modes, and switch tracks with a simple tap or swipe right on the earbuds.',
+            cls: 'tap'
+        },
+        {
+            title: 'Bose App',
+            text: 'Personalize almost everything to your liking in the app with Adjustable EQ, custom modes, and a shortcut you access right on the earbud.',
+            cls: 'setting'
+        }
+    ];
+
+    const onChangeColor = (color) => {
+        setSelectedColor(color);
+    }
+
+    const btnColor = [
+        'Diamond 60Th Edition',
+        'Lunar Blue',
+        'Black',
+        'White Smoke'
+    ]
 
     return (
         <>
@@ -107,7 +150,7 @@ const Main = () => {
                     text={'It’s a groundbreaking experience with sound so real you’ll almost try to reach out and touch it.'}
                 />
                 <div className="only-txt">
-                    <strong>World-class noise cancellation</strong>
+                    <h3>World-class noise cancellation</h3>
                     <p>
                         Get real quiet when you want it and awareness when you need it.<br/>
                         Or blend the tow to your liking whit these noise cancelling earbuds.
@@ -118,7 +161,7 @@ const Main = () => {
                     <img className="run-man" src="/run-man.png" alt="달리는 이미지" />
                 </div>
                 <div className="only-txt">
-                    <strong>The sound and silence are all you</strong>
+                    <h3>The sound and silence are all you</h3>
                     <p>
                         CustomTune technology auto-adjusts the noise cancellation and sound performance to your ears’ liking.<br/>
                         So everything hits just as it should.
@@ -136,6 +179,60 @@ const Main = () => {
                     title={'Sooo stable'}
                     text={'Stability bands hug your ears’ contours for a snug fit. Choose between 9 potential combos for the best fit.'}
                 />
+                <ImgLayout
+                    type={'Left'}
+                    imgSrc={'/sub5.webp'}
+                    title={'Sound just got real'}
+                    text={`These spatial audio earbuds with Bose Immersive Audio push the boundary of what it means to listen. So you get music that sounds realer than ever before.`}
+                />
+            </section>
+            <section className="sub-section" ref={subSectionRef}>
+                <div>
+                    <h4>SOUND IS</h4>
+                    <h4>POWER</h4>
+                    <h4>BOSE</h4>
+                </div>
+            </section>
+            <section className="sub-section2">
+                <h3>Life made easier</h3>
+                <div>
+                    {infoBoseData.map((item, index) => (
+                        <InfoBose
+                            key={index}
+                            title={item.title}
+                            text={item.text}
+                            cls={item.cls}
+                        />
+                    ))}
+                </div>
+            </section>
+            <section className="sell-section">
+                <SellImg
+                    color={selectedColor}
+                />
+                <div className='sell-info'>
+                    <h2>BOSE QuietComfort Ultra Earbuds</h2>
+                    <em>$299.00</em>
+                    <div>
+                        <p>Color <span>{selectedColor}</span></p>
+                        <ul>
+                            {btnColor.map(color => (
+                                <li key={color}>
+                                    <button
+                                        className={selectedColor === color ? 'active' : ''}
+                                        onClick={() => onChangeColor(color)}
+                                    >
+                                        {color}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className='cart-btn'>
+                        <button className='add-to-cart'>ADD TO CART</button>
+                        <button className='add-to-hart'>찜</button>
+                    </div>
+                </div>
             </section>
         </>
     )
