@@ -1,0 +1,112 @@
+.main-section {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: #fff;
+    overflow: hidden;
+    > div {
+        width: 20%;
+        position: absolute;
+        &.main-left {
+            left: 30%;
+            bottom: 15%;
+        }
+        &.main-right {
+            right: 30%;
+            top: 15%;
+        }
+        > img {
+            width: 100%;
+            display: block;
+        }
+    }
+    h1 {
+        width: 100%;
+        font-size: 20rem;
+        font-weight: 700;
+        color: #fb8500;
+        letter-spacing: -1rem;
+        position: absolute;
+        line-height: 1;
+
+        &:first-of-type {
+            top: 35%;
+            right: -100%;
+            transform: translateY(-50%);
+            text-align: right;
+        }
+        &:last-of-type {
+            left: -100%;
+            bottom: 35%;
+            transform: translateY(50%);
+        }
+    }
+}
+
+.info-section {
+    // max-width: 160rem;
+    overflow: hidden;
+    
+    > div {
+        max-width: 140rem;
+        margin: 0 auto;
+        margin-bottom: 8rem;
+        
+        &.fnc-area {
+            gap: 4rem;
+            align-items: center;
+        }
+
+        &.only-txt {
+            strong {
+                margin-bottom: 4rem;
+            }
+        }
+    }
+
+    strong {
+        display: block;
+        font-size: 6rem;
+        margin-bottom: 2.4rem;
+    }
+
+    p {
+        font-size: 2.4rem;
+    }
+
+    img {
+        width: 100%;
+        display: block;
+    }
+
+    .move-txt {
+        position: relative;
+
+        .feels {
+            color: $orange;
+            font-size: 15rem;
+            font-weight: 700;
+            white-space: nowrap;
+            transition-duration: 200ms;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            letter-spacing: -.1rem;
+    
+            &.left {
+                transform: skew(-200deg) scale(1.1) translateY(-50%);
+            }
+            &.right {
+                transform: skew(200deg) scale(1.1) translateY(-50%);
+            }
+        }
+    
+        .run-man {
+            width: 50%;
+            margin: 0 auto;
+        }
+    }
+}

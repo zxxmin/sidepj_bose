@@ -1,0 +1,8 @@
+.fnc-area {
+    display: flex;
+    flex-direction: row;
+    > .l-area,
+    > .r-area {
+        flex: 1;
+    }
+}

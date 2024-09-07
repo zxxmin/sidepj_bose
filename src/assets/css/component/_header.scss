@@ -1,0 +1,43 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 1.6rem 4rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    backdrop-filter: blur(20px);
+    z-index: 1;
+
+    h1 {
+        font-size: 0;
+        a {
+            background-image: url('/logo.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: block;
+            width: 193px;
+            height: 24px;
+        }
+    }
+
+    nav {
+        ul {
+            li {
+                a {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        gap: 2.4rem;
+        align-items: center;
+    }
+}
