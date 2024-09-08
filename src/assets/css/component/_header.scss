@@ -12,6 +12,16 @@ header {
         background-color: #fff;
         backdrop-filter: blur(20px);
         z-index: 1;
+
+        &.login {
+            background-color: transparent;
+            backdrop-filter: none;
+            justify-content: center;
+
+            >h1 a {
+                filter: brightness(0) invert(1);
+            }
+        }
     
         > h1 {
             font-size: 0;
@@ -63,7 +73,7 @@ header {
     
         > div {
             ul {
-                a {
+                button {
                     font-size: 0;
                     &::before {
                         content: '';

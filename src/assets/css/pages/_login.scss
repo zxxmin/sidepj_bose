@@ -1,0 +1,67 @@
+.login_bg {
+    width: 100%;
+    height: 100vh;
+    background-image: url('/login_bg.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: 20rem;
+
+    > div {
+        width: 100rem;
+        gap: 8rem;
+        margin: 0 auto;
+
+        > .l-area {
+            color: $white;
+
+            >button {
+                color: inherit;
+                &::before{
+                    content: '\1F814';
+                    margin-right: 1.6rem;
+                }
+            }
+
+            h2 {
+                font-size: 6rem;
+                margin: 2.4rem 0;
+            }
+        }
+
+        > .r-area {
+            display: flex;
+            flex-direction: column;
+            gap: 3.2rem;
+            background-color: $white;
+            padding: 5.6rem 4rem;
+
+            >form {
+                input {
+                    width: 100%;
+                    padding: 1.6rem;
+                    margin-bottom: 2.4rem;
+                }
+
+                span {
+                    display: block;
+                    font-size: 1.4rem;
+                    font-weight: 400;
+                    margin-top: 2.4rem;
+                }
+            }
+
+
+            >span {
+                text-align: center;
+            }
+
+
+            >div {
+                display: flex;
+                flex-direction: column;
+                gap: .8rem;
+            }
+        }
+    }
+}

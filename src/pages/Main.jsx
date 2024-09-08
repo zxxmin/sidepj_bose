@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import Header from "../components/Header"
+import Button from '../components/Button';
 import ImgLayout from '../components/ImgLayout';
 import InfoBose from '../components/InfoBose';
 import SellImg from '../components/SellImg';
@@ -230,8 +231,16 @@ const Main = () => {
                         </ul>
                     </div>
                     <div className='cart-btn'>
-                        <button className='add-to-cart' onClick={() => nav('/login')}>ADD TO CART</button>
-                        <button className='add-to-hart' onClick={() => nav('/login')}>찜</button>
+                        <Button
+                            onClick={() => nav('/login')}
+                            type={'func add-to-cart'}
+                            text={'ADD TO CART'}
+                        />
+                        <Button
+                            onClick={() => nav('/login')}
+                            type={'add-to-hart'}
+                            text={'찜'}
+                        />
                     </div>
                 </div>
             </section>

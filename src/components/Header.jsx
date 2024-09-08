@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ type }) => {
     const nav = useNavigate();
 
     const menuItems = [
@@ -29,73 +29,54 @@ const Header = () => {
 
     return (
         <header>
-            <div className="nav-wrap">
+            <div className={`nav-wrap ${type === 'LOGIN' ? 'login' : ''}`}>
                 <h1><a href="#">BOSE 로고</a></h1>
 
-                <nav>
-                    <ul>
-                        {menuItems.map((item, index) => (
-                            <li key={index}>
-                                <a href="#none" title={`${item.title} 바로가기`}>{item.title}</a>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
+                {type !== 'LOGIN' && (
+                    <>
+                    <nav>
+                        <ul>
+                            {menuItems.map((item, index) => (
+                                <li key={index}>
+                                    <a href="#none" title={`${item.title} 바로가기`}>{item.title}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
 
-                <div>
-                    <ul>
-                        <li>
-                            <a
-                                href="#none"
-                                className="user"
-                                title="my bose 바로가기"
-                                onClick={() => nav('/login')}
-                            >
-                                my bose
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#none"
-                                className="cart"
-                                title="장바구니 바로가기"
-                                onClick={() => nav('/login')}
-                            >
-                                장바구니
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#none"
-                                className="search"
-                                title="검색 바로가기"
-                                onClick={() => nav('/login')}
-                            >
-                                검색
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div>
-                <div>
                     <div>
                         <ul>
-                            <li><a href="#none">New & Featured</a></li>
-                            <li><a href="#none">All Headphones</a></li>
-                            <li><a href="#none">Noise Cancelling Headphones</a></li>
-                            <li><a href="#none">Spatial Audio Headphones</a></li>
-                            <li><a href="#none">Accessories</a></li>
-                            <li><a href="#none">Sale</a></li>
-                            <li><a href="#none">Refurbished</a></li>
-                            <li><a href="#none">Gift Cards</a></li>
+                            <li>
+                                <button
+                                    className="user"
+                                    title="my bose 바로가기"
+                                    onClick={() => nav('/login')}
+                                >
+                                    my bose
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    className="cart"
+                                    title="장바구니 바로가기"
+                                    onClick={() => nav('/login')}
+                                >
+                                    장바구니
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    className="search"
+                                    title="검색 바로가기"
+                                    onClick={() => nav('/login')}
+                                >
+                                    검색
+                                </button>
+                            </li>
                         </ul>
                     </div>
-                    <div>
-                        
-                    </div>
-                </div>
+                    </>
+                )}
             </div>
         </header>
     )

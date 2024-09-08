@@ -313,16 +313,12 @@ $class: (
             display: flex;
             flex-direction: row;
             gap: 2.4rem;
-            height: 6rem;
             > button {
                 &.add-to-cart {
-                    background-color: $black;
-                    color: $white;
                     flex: 1;
                 }
                 &.add-to-hart {
                     width: 6rem;
-                    border: .1rem solid $black;
                     overflow: hidden;
                     font-size: 0;
                     &::before {
