@@ -25,10 +25,10 @@ const SellImg = ({color}) => {
                 pagination={{ clickable: true }}
                 loop={true}
             >
-                <SwiperSlide><img src={`/sell_${formattedColor}_01.webp`} alt={`${color} 이미지 1`} /></SwiperSlide>
-                <SwiperSlide><img src={`/sell_${formattedColor}_02.webp`} alt={`${color} 이미지 2`} /></SwiperSlide>
-                <SwiperSlide><img src={`/sell_${formattedColor}_03.webp`} alt={`${color} 이미지 3`} /></SwiperSlide>
-                <SwiperSlide><img src={`/sell_${formattedColor}_04.webp`} alt={`${color} 이미지 4`} /></SwiperSlide>
+                <SwiperSlide><img src={`/sidepj_bose/sell_${formattedColor}_01.webp`} alt={`${color} 이미지 1`} /></SwiperSlide>
+                <SwiperSlide><img src={`/sidepj_bose/sell_${formattedColor}_02.webp`} alt={`${color} 이미지 2`} /></SwiperSlide>
+                <SwiperSlide><img src={`/sidepj_bose/sell_${formattedColor}_03.webp`} alt={`${color} 이미지 3`} /></SwiperSlide>
+                <SwiperSlide><img src={`/sidepj_bose/sell_${formattedColor}_04.webp`} alt={`${color} 이미지 4`} /></SwiperSlide>
             </Swiper>
         </div>
     )
