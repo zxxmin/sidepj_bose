@@ -129,25 +129,25 @@ const Main = () => {
             
             <section className="main-section" ref={mainSectionRef}>
                 <div className="main-left">
-                    <img src="/sidepj_bose/images/main-left.png" alt="왼쪽 이어폰" />
+                    <img src="/sidepj_bose/main-left.png" alt="왼쪽 이어폰" />
                 </div>
                 <h1 className='for' ref={forElementRef}>FOR THE</h1>
                 <h1 className='love' ref={loveElementRef}>LOVE OF MUSIC</h1>
                 <div className="main-right">
-                    <img src="/sidepj_bose/images/main-right.png" alt="오른쪽 이어폰" />
+                    <img src="/sidepj_bose/main-right.png" alt="오른쪽 이어폰" />
                 </div>
             </section>
 
             <section className="info-section" style={infoSectionStyle}>
                 <ImgLayout
                     type={'Right'}
-                    imgSrc={'/sidepj_bose/images/sub1.webp'}
+                    imgSrc={'/sidepj_bose/sub1.webp'}
                     title={'Welcome to the acousitc sweet spot'}
                     text={'What you’re hearing is placed just in front of you, so it seems like you aren’t listening with earbuds at all.'}
                 />
                 <ImgLayout
                     type={'Left'}
-                    imgSrc={'/sidepj_bose/images/sub2.webp'}
+                    imgSrc={'/sidepj_bose/sub2.webp'}
                     title={'Mind-bending natural sound'}
                     text={'It’s a groundbreaking experience with sound so real you’ll almost try to reach out and touch it.'}
                 />
@@ -160,7 +160,7 @@ const Main = () => {
                 </div>
                 <div className="move-txt">
                     <p className="feels" ref={feelsElementRef}>feels soooooo good!</p>
-                    <img className="run-man" src="/sidepj_bose/images/run-man.png" alt="달리는 이미지" />
+                    <img className="run-man" src="/sidepj_bose/run-man.png" alt="달리는 이미지" />
                 </div>
                 <div className="only-txt">
                     <h3>The sound and silence are all you</h3>
@@ -171,19 +171,19 @@ const Main = () => {
                 </div>
                 <ImgLayout
                     type={'Left'}
-                    imgSrc={'/sidepj_bose/images/sub3.webp'}
+                    imgSrc={'/sidepj_bose/sub3.webp'}
                     title={'Sooo comfy'}
                     text={'Umbrella-shaped eartips are super soft yet still seal off outside noise.'}
                 />
                 <ImgLayout
                     type={'Right'}
-                    imgSrc={'/sidepj_bose/images/sub4.webp'}
+                    imgSrc={'/sidepj_bose/sub4.webp'}
                     title={'Sooo stable'}
                     text={'Stability bands hug your ears’ contours for a snug fit. Choose between 9 potential combos for the best fit.'}
                 />
                 <ImgLayout
                     type={'Left'}
-                    imgSrc={'/sidepj_bose/images/sub5.webp'}
+                    imgSrc={'/sidepj_bose/sub5.webp'}
                     title={'Sound just got real'}
                     text={`These spatial audio earbuds with Bose Immersive Audio push the boundary of what it means to listen. So you get music that sounds realer than ever before.`}
                 />
