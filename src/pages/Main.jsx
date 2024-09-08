@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 import Header from "../components/Header"
 import ImgLayout from '../components/ImgLayout';
 import InfoBose from '../components/InfoBose';
@@ -14,7 +16,7 @@ const Main = () => {
     const feelsElementRef = useRef(null);
     const subSectionRef = useRef(null);
     
-    
+    const nav = useNavigate();
     
     useEffect(() => {
         const windowWidth = window.innerWidth;
@@ -56,10 +58,9 @@ const Main = () => {
                 
                 if(scrollTop >= moveStart && scrollTop <= moveEnd) {
                     const progress = (scrollTop - moveStart) / (moveEnd - moveStart);
-                    const leftVal = 120 - progress * 200;
+                    const leftVal = 130 - progress * 250;
                     feelsElement.style.left = `${leftVal}%`;
 
-                    // 방향에 따른 클래스 추가/제거
                     const direction = scrollTop > prevScrollTop ? "left" : "right";
                     feelsElement.classList.add(direction);
 
@@ -74,7 +75,7 @@ const Main = () => {
                 const subSectionBottom = subSectionRef.current.getBoundingClientRect().bottom + window.scrollY;
                 const subSectionDiv = subSectionRef.current.querySelector('div');
 
-                scrollTop+windowHeight >= subSectionBottom
+                scrollTop+(windowHeight/0.8) >= subSectionBottom
                     ? subSectionDiv.classList.add('active')
                     : subSectionDiv.classList.remove('active');
             }
@@ -229,8 +230,8 @@ const Main = () => {
                         </ul>
                     </div>
                     <div className='cart-btn'>
-                        <button className='add-to-cart'>ADD TO CART</button>
-                        <button className='add-to-hart'>찜</button>
+                        <button className='add-to-cart' onClick={() => nav('/login')}>ADD TO CART</button>
+                        <button className='add-to-hart' onClick={() => nav('/login')}>찜</button>
                     </div>
                 </div>
             </section>

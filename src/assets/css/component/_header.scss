@@ -1,43 +1,96 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 1.6rem 4rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background-color: #fff;
-    backdrop-filter: blur(20px);
-    z-index: 1;
-
-    h1 {
-        font-size: 0;
-        a {
-            background-image: url('/logo.png');
-            background-repeat: no-repeat;
-            background-size: contain;
-            display: block;
-            width: 193px;
-            height: 24px;
+    > div.nav-wrap {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        padding: 1.6rem 4rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: #fff;
+        backdrop-filter: blur(20px);
+        z-index: 1;
+    
+        > h1 {
+            font-size: 0;
+            a {
+                background-image: url('/logo.png');
+                background-repeat: no-repeat;
+                background-size: contain;
+                display: block;
+                width: 193px;
+                height: 24px;
+            }
         }
-    }
+    
+        > nav {
+            ul {
+                gap: 4rem;
+                
+                li {
+                    ul.dropdown {
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        width: 100%;
+                        background-color: $white;
+                        border: .1rem solid #ccc;
+                        display: none;
 
-    nav {
-        ul {
-            li {
-                a {
-                    font-weight: 700;
+                        li {
+                            padding: 1rem;
+                            border-bottom: .1rem solid #eee;
+                        }
+                    }
+
+                    &:hover {
+                        ul.dropdown {
+                            display: block;
+                        }
+                    }
+
                 }
             }
         }
-    }
+    
+        $icons: (
+            'user',
+            'cart',
+            'search'
+        );
+    
+        > div {
+            ul {
+                a {
+                    font-size: 0;
+                    &::before {
+                        content: '';
+                        width: 2.4rem;
+                        height: 2.4rem;
+                        display: block;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                    }
+    
+                    @each $cls, $icon in $icons {
+                        &.#{$cls} {
+                            &::before {
+                                background-image: url($url-img + '#{$cls}.svg');
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        ul {
+            display: flex;
+            flex-direction: row;
+            gap: 2.4rem;
+            align-items: center;
+        }
 
-    ul {
-        display: flex;
-        flex-direction: row;
-        gap: 2.4rem;
-        align-items: center;
     }
 }
