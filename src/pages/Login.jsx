@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
 import Header from "../components/Header";
 import Button from "../components/Button";
+import KakaoLogin from "../components/KakaoLogin";
+import NaverLogin from "../components/NaverLogin";
 
 const Login = () => {
     usePageTitle('BOSE | Login')
@@ -86,14 +88,12 @@ const Login = () => {
                         </form>
                         <span>OR</span>
                         <div>
+                            <KakaoLogin />
+                            <NaverLogin />
                             <Button
-                                text={'SIGN IN/JOIN WITH KAKAO'}
-                            />
-                            <Button
-                                text={'SIGN IN/JOIN WITH NAVER'}
-                            />
-                            <Button
-                                text={'SIGN IN/JOIN WITH FACEBOOK'}
+                                onClick={() => alert('연동 진행 중입니다.')}
+                                type={'google'}
+                                text={'SIGN IN/JOIN WITH GOOGLE'}
                             />
                         </div>
                         </>

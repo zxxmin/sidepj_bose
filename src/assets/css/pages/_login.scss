@@ -56,11 +56,37 @@
                 text-align: center;
             }
 
-
+            $class: (
+                'kakao',
+                'naver',
+                'facebook',
+                'google'
+            );
+            
             >div {
                 display: flex;
                 flex-direction: column;
                 gap: .8rem;
+
+                button {
+                    &::before {
+                        content: '';
+                        width: 2rem;
+                        height: 2rem;
+                        display: inline-block;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                    }
+
+                    @each $cls, $icon in $class {
+                        &.#{$cls} {
+                            &::before {
+                                $image-format: if($cls == 'google', 'png', 'webp');
+                                background-image: url(#{$url-img} + '#{$cls}.' + $image-format);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
