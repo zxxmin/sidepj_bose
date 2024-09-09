@@ -18,6 +18,66 @@ const Main = () => {
     const subSectionRef = useRef(null);
     
     const nav = useNavigate();
+
+    const onScrollMainSec = (scrollTop, windowWidth) => {
+        if(mainSectionRef.current) {
+            if(scrollTop > windowWidth) {
+                Object.assign(mainSectionRef.current.style, {
+                    position: 'absolute',
+                    top: `${windowWidth}px`,
+                    height: '100%'
+                })
+            } else {
+                Object.assign(mainSectionRef.current.style, {
+                    position: '',
+                    top: '',
+                    height: ''
+                });
+    
+                const percent = 100 - (scrollTop / windowWidth * 100);
+    
+                if(forElementRef.current && loveElementRef.current) {
+                    forElementRef.current.style.right = `${-(percent) + 5}%`;
+                    loveElementRef.current.style.left = `${-(percent) + 5}%`;
+                }
+            }
+        }
+    }
+
+    const onScrollFeelsEl = (scrollTop, windowHeight) => {
+        // 글자 좌우로 움직이기
+        if(feelsElementRef.current) {
+            const feelsElement = feelsElementRef.current;
+            const elementRect = feelsElement.getBoundingClientRect();
+            const elementTop = elementRect.top + window.scrollY; 
+            const moveStart = elementTop - windowHeight;
+            const moveEnd = elementTop;
+            
+            if(scrollTop >= moveStart && scrollTop <= moveEnd) {
+                const progress = (scrollTop - moveStart) / (moveEnd - moveStart);
+                const leftVal = 130 - progress * 250;
+                feelsElement.style.left = `${leftVal}%`;
+
+                const direction = scrollTop > prevScrollTop ? "left" : "right";
+                feelsElement.classList.add(direction);
+
+                setTimeout(() => {
+                    feelsElement.classList.remove(direction);
+                }, 400);
+            }
+        }
+    }
+
+    const onScrollSubSec = (scrollTop, windowHeight) => {
+        if (subSectionRef.current) {
+            const subSectionBottom = subSectionRef.current.getBoundingClientRect().bottom + window.scrollY;
+            const subSectionDiv = subSectionRef.current.querySelector('div');
+
+            scrollTop+(windowHeight/0.8) >= subSectionBottom
+                ? subSectionDiv.classList.add('active')
+                : subSectionDiv.classList.remove('active');
+        }
+    }
     
     useEffect(() => {
         const windowWidth = window.innerWidth;
@@ -26,60 +86,12 @@ const Main = () => {
         const onScroll = () => {
             const scrollTop = document.documentElement.scrollTop;
 
-            if(mainSectionRef.current) {
-                if(scrollTop > windowWidth) {
-                    Object.assign(mainSectionRef.current.style, {
-                        position: 'absolute',
-                        top: `${windowWidth}px`,
-                        height: '100%'
-                    })
-                } else {
-                    Object.assign(mainSectionRef.current.style, {
-                        position: '',
-                        top: '',
-                        height: ''
-                    });
-        
-                    const percent = 100 - (scrollTop / windowWidth * 100);
-        
-                    if(forElementRef.current && loveElementRef.current) {
-                        forElementRef.current.style.right = `${-(percent) + 5}%`;
-                        loveElementRef.current.style.left = `${-(percent) + 5}%`;
-                    }
-                }
-            }
-
-            // 글자 좌우로 움직이기
-            if(feelsElementRef.current) {
-                const feelsElement = feelsElementRef.current;
-                const elementRect = feelsElement.getBoundingClientRect();
-                const elementTop = elementRect.top + window.scrollY; 
-                const moveStart = elementTop - windowHeight;
-                const moveEnd = elementTop;
-                
-                if(scrollTop >= moveStart && scrollTop <= moveEnd) {
-                    const progress = (scrollTop - moveStart) / (moveEnd - moveStart);
-                    const leftVal = 130 - progress * 250;
-                    feelsElement.style.left = `${leftVal}%`;
-
-                    const direction = scrollTop > prevScrollTop ? "left" : "right";
-                    feelsElement.classList.add(direction);
-
-                    setTimeout(() => {
-                        feelsElement.classList.remove(direction);
-                    }, 400);
-                }
-            }
+            onScrollMainSec(scrollTop, windowWidth);
+            onScrollFeelsEl(scrollTop, windowHeight);
+            onScrollSubSec(scrollTop, windowHeight);
+            
             setPrevScrollTop(scrollTop);
 
-            if (subSectionRef.current) {
-                const subSectionBottom = subSectionRef.current.getBoundingClientRect().bottom + window.scrollY;
-                const subSectionDiv = subSectionRef.current.querySelector('div');
-
-                scrollTop+(windowHeight/0.8) >= subSectionBottom
-                    ? subSectionDiv.classList.add('active')
-                    : subSectionDiv.classList.remove('active');
-            }
         
         }
 
