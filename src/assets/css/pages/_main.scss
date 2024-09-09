@@ -8,6 +8,9 @@ section {
     }
 }
 .main-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     position: fixed;
     top: 0;
     right: 0;
@@ -37,19 +40,19 @@ section {
         font-weight: 700;
         color: #fb8500;
         letter-spacing: -1rem;
-        position: absolute;
+        position: relative;
         line-height: 1;
 
         &:first-of-type {
-            top: 35%;
+            // top: 35%;
             right: -100%;
-            transform: translateY(-50%);
+            // transform: translateY(-50%);
             text-align: right;
         }
         &:last-of-type {
             left: -100%;
-            bottom: 35%;
-            transform: translateY(50%);
+            // bottom: 35%;
+            // transform: translateY(50%);
         }
     }
 }
