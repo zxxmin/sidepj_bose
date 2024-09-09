@@ -1,7 +1,14 @@
 import { useEffect } from "react"
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
+const REST_API_KEY = '68bbec7aa1f63937ebb5311c52d8db22';
+const REDIRECT_URI = 'http://localhost:5173/sidepj_bose/successlogin';
+const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
 const KakaoLogin = () => {
+    const nav = useNavigate();
+
     useEffect(() => {
         if (!window.Kakao.isInitialized()) {
           window.Kakao.init('03f79581cf0fb8864d8948d4d10494da');
@@ -12,6 +19,7 @@ const KakaoLogin = () => {
         window.Kakao.Auth.login({
           success: function(authObj) {
             console.log(authObj);
+            window.location.href = link;
           },
           fail: function(err) {
             console.error(err);

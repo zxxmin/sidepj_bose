@@ -1,0 +1,68 @@
+import { useEffect, useState } from "react"
+import { useLocation } from 'react-router-dom';
+
+const SuccessLogin = ({loginType}) => {
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const code = queryParams.get('code');
+
+    const [username, setUsername] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchToken = async () => {
+            try {
+                // 카카오 API를 사용하여 액세스 토큰 요청
+                const response = await fetch('https://kauth.kakao.com/oauth/token', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        grant_type: 'authorization_code',
+                        client_id: '68bbec7aa1f63937ebb5311c52d8db22', // 여기에 본인의 REST API 키를 입력하세요.
+                        redirect_uri: 'http://localhost:5173/sidepj_bose/successlogin', // 리다이렉트 URI
+                        code: code,
+                    }),
+                });
+
+                const data = await response.json();
+                console.log('>>>>>>>')
+                console.log(data);
+                const accessToken = data.access_token;
+
+                // 액세스 토큰을 사용하여 사용자 정보 요청
+                const userResponse = await fetch('https://kapi.kakao.com/v2/user/me', {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                        'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+                    },
+                });
+
+                const userData = await userResponse.json();
+                const username = userData.kakao_account.profile.nickname;
+
+                setUsername(username);
+                setLoading(false);
+            } catch (err) {
+                console.error(err);
+                setError('Error fetching user data');
+                setLoading(false);
+            }
+        };
+
+        if (code) {
+            fetchToken();
+        }
+    }, [code]);
+
+    return(
+        <div>
+            <strong>카카오 로그인 성공</strong>
+            <p><strong>{username}</strong>님 반갑습니다.</p>
+        </div>
+    )
+}
+
+export default SuccessLogin
