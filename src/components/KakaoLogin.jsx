@@ -18,6 +18,8 @@ switch (ServerName) {
         break;
 }
 
+console.log(REDIRECT_URI)
+
 const REST_API_KEY = '68bbec7aa1f63937ebb5311c52d8db22';
 const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
