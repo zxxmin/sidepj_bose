@@ -4,6 +4,7 @@ import Button from "./Button";
 
 let REDIRECT_URI;
 let ServerName = window.location.hostname;
+console.log(ServerName)
 
 switch (ServerName) {
     case 'localhost':
