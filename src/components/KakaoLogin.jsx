@@ -4,6 +4,7 @@ import Button from "./Button";
 
 let REDIRECT_URI;
 let ServerName = window.location.hostname;
+console.log('ServerName 왜 안알려줘')
 console.log(ServerName)
 
 switch (ServerName) {
