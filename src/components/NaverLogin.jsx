@@ -4,7 +4,7 @@ import Button from "./Button";
 const NaverLogin = () => {
     const { naver } = window;
     const NAVER_CLIENT_ID = "WobRmPvblhTHwtl8Lqgc";
-    const NAVER_CALLBACK_URL = "http://localhost:5173/login";
+    const NAVER_CALLBACK_URL = "http://localhost:5173/sidepj_bose/successlogin";
     
     const initializeNaverLogin = () => {
 		const naverLogin = new naver.LoginWithNaverId({
@@ -16,7 +16,14 @@ const NaverLogin = () => {
 		})
 		naverLogin.init()
       
-        
+        naverLogin.getLoginStatus(async function (status) {
+			if (status) {
+				const userid = naverLogin.user.getEmail()
+				const username = naverLogin.user.getName()
+
+                console.log(userid)
+			}
+		})   
 	}
 
     useEffect(() => {

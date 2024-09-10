@@ -7,7 +7,7 @@
 
 
 ## 🔗 Link
-- 깃허브 페이지 → https://zxxmin.github.io/sidepj_bose/
+- 깃허브 페이지 → https://zxxmin.github.io/sidepj_bose
 - 깃허브 레파지토리 → https://github.com/zxxmin/sidepj_bose
 - vercel 배포 → https://sidepj-bose-6l1mwxykw-songjimins-projects.vercel.app
 
