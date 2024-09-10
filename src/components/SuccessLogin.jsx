@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Button from "./Button";
 
 const SuccessLogin = ({loginType}) => {
+    const nav = useNavigate();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const code = queryParams.get('code');
@@ -58,10 +60,18 @@ const SuccessLogin = ({loginType}) => {
     }, [code]);
 
     return(
-        <div>
+        <>
+        <div style={{margin: '100px auto 50px', textAlign: 'center'}}>
             <strong>카카오 로그인 성공</strong>
             <p><strong>{username}</strong>님 반갑습니다.</p>
         </div>
+        <Button
+            onClick={() => nav('/')}
+            type={'func'}
+            text={'메인으로 가기'}
+        />
+        </>
+
     )
 }
 
