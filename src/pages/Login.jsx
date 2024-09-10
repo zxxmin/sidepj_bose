@@ -8,25 +8,23 @@ import NaverLogin from "../components/NaverLogin";
 
 const Login = () => {
     usePageTitle('BOSE | Login')
-
     const [form, setForm] = useState('init');
-    const [cancelClicked, setCancelClicked] = useState(true);
+    const [inputVal, setInputVal] = useState('');
     const nav = useNavigate();
     const inputRef = useRef(null);
+
 
     const onClickNext = (e) => {
         e.preventDefault();
 
-        const emailValue = inputRef.current.value
-
-        if(emailValue === '') {
+        if(inputVal === '') {
             alert('email을 작성해 주세요.')
             inputRef.current.focus();
             return;
         }
 
         const emailPattern = /^[^\s@]+@[^\s@]+\.(com|net)$/;
-        if (!emailPattern.test(emailValue)) {
+        if (!emailPattern.test(inputVal)) {
             alert('유효한 이메일 주소를 입력해 주세요.');
             inputRef.current.focus();
             return;
@@ -37,12 +35,7 @@ const Login = () => {
     }
 
     const onClickCancle = () => {
-        if (form === 'init') {
-            nav(-1);
-        } else if (cancelClicked) {
-            setForm('init');
-            setCancelClicked(true);
-        }
+        form === 'init' ? nav(-1) : setForm('init');
     }
 
     return (
@@ -78,6 +71,8 @@ const Login = () => {
                                 type="text"
                                 placeholder="Email"
                                 ref={inputRef}
+                                value={inputVal}
+                                onChange={(e) => setInputVal(e.target.value)}
                             />
 
                             <Button
@@ -102,7 +97,7 @@ const Login = () => {
                         <form>
                             <input
                                 type="text"
-                                value={inputRef.current.value}
+                                value={inputVal}
                                 disabled
                             />
 
