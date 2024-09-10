@@ -35,7 +35,7 @@ const SuccessLogin = () => {
                 },
                 body: new URLSearchParams({
                     grant_type: 'authorization_code',
-                    client_id: '68bbec7aa1f63937ebb5311c52d8db22', // 여기에 본인의 REST API 키를 입력하세요.
+                    client_id: '68bbec7aa1f63937ebb5311c52d8db22', // 본인의 REST API 키
                     redirect_uri: REDIRECT_URI, // 리다이렉트 URI
                     code: code,
                 }),
@@ -66,10 +66,12 @@ const SuccessLogin = () => {
 
     const getNaverToken = async () => {
         if(!location.hash) return;
+        // 액세서 토큰 추출
         const token = location.hash.split('=')[1].split('&')[0];
         console.log(token);
 
         try {
+            // 네이버 API를 사용하여 사용자 정보 요청
             const response = await fetch('/api/naver/v1/nid/me', {
                 method: 'GET',
                 headers: {
@@ -84,7 +86,7 @@ const SuccessLogin = () => {
         } catch (err) {
             console.error(err);
             setError('Error fetching user data');
-                setLoading(false);
+            setLoading(false);
         }
     }
 
