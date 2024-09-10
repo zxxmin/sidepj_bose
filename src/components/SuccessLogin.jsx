@@ -7,10 +7,24 @@ const SuccessLogin = ({loginType}) => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const code = queryParams.get('code');
+    console.log('code', code);
 
     const [username, setUsername] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    let REDIRECT_URI;
+    let ServerName = window.location.hostname;
+    switch (ServerName) {
+        case 'localhost':
+            REDIRECT_URI = 'http://localhost:5173/sidepj_bose/successlogin';
+            break;
+        case 'zxxmin.github.io':
+            REDIRECT_URI = 'https://zxxmin.github.io/sidepj_bose/successlogin';
+            break;
+        default :
+            break;
+    }
 
     useEffect(() => {
         const fetchToken = async () => {
@@ -24,7 +38,7 @@ const SuccessLogin = ({loginType}) => {
                     body: new URLSearchParams({
                         grant_type: 'authorization_code',
                         client_id: '68bbec7aa1f63937ebb5311c52d8db22', // 여기에 본인의 REST API 키를 입력하세요.
-                        redirect_uri: 'http://localhost:5173/sidepj_bose/successlogin', // 리다이렉트 URI
+                        redirect_uri: REDIRECT_URI, // 리다이렉트 URI
                         code: code,
                     }),
                 });
