@@ -4,7 +4,7 @@ import './index.css'
 import { BrowserRouter, HashRouter } from 'react-router-dom'
 
 createRoot(document.getElementById('root')).render(
-  <HashRouter>
+  <BrowserRouter basename='/sidepj_bose'>
     <App />
-  </HashRouter>
+  </BrowserRouter>
 )

@@ -6,6 +6,20 @@ import Button from "../components/Button";
 import KakaoLogin from "../components/KakaoLogin";
 import NaverLogin from "../components/NaverLogin";
 
+let REDIRECT_URI;
+let ServerName = window.location.hostname;
+
+switch (ServerName) {
+    case 'localhost':
+        REDIRECT_URI = 'http://localhost:5173/sidepj_bose/successlogin';
+        break;
+    case 'zxxmin.github.io':
+        REDIRECT_URI = 'https://zxxmin.github.io/sidepj_bose/successlogin';
+        break;
+    default :
+        break;
+}
+
 const Login = () => {
     usePageTitle('BOSE | Login')
     const [form, setForm] = useState('init');
@@ -83,8 +97,12 @@ const Login = () => {
                         </form>
                         <span>OR</span>
                         <div>
-                            <KakaoLogin />
-                            <NaverLogin />
+                            <KakaoLogin
+                                REDIRECT_URI={REDIRECT_URI}
+                            />
+                            <NaverLogin
+                                REDIRECT_URI={REDIRECT_URI}
+                            />
                             <Button
                                 onClick={() => alert('연동 진행 중입니다.')}
                                 type={'google'}
