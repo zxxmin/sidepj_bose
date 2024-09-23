@@ -9,10 +9,10 @@ console.log(ServerName)
 
 switch (ServerName) {
     case 'localhost':
-        REDIRECT_URI = 'http://localhost:5173/sidepj_bose/successlogin';
+        REDIRECT_URI = 'http://localhost:5173/sidepj_bose/#/successlogin';
         break;
     case 'zxxmin.github.io':
-        REDIRECT_URI = 'https://zxxmin.github.io/sidepj_bose/successlogin';
+        REDIRECT_URI = 'https://zxxmin.github.io/sidepj_bose/#/successlogin';
         break;
     default :
         break;

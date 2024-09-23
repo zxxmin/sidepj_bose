@@ -4,7 +4,7 @@ import Button from "./Button";
 const NaverLogin = () => {
     const { naver } = window;
     const NAVER_CLIENT_ID = "WobRmPvblhTHwtl8Lqgc";
-    const NAVER_CALLBACK_URL = "http://localhost:5173/sidepj_bose/successlogin";
+    const NAVER_CALLBACK_URL = "http://localhost:5173/sidepj_bose/#/successlogin";
     
     const initializeNaverLogin = () => {
 		const naverLogin = new naver.LoginWithNaverId({
