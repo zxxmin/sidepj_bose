@@ -23,3 +23,9 @@
 - <img src="https://img.shields.io/badge/React-61DBFB?style=flat-square&logo=react&logoColor=white"/> : 공부한 React를 복습하기위해 사용하였고, 쉬운 라우팅 기능과 컴포넌트 구조에 대해 이해할 수 있었다. 큰 기능을 요구한 페이지가 아니라 리액트의 구조와 기능들을 익힐 수 있었다.
 
 - <img src="https://img.shields.io/badge/Sass-CD6799?style=flat-square&logo=sass&logoColor=white"/> : 공부를 하면서 JSX 파일과 CSS 파일을 같은 폴더에 같이 사용하던데, 큰 범위로 공통적으로 사용해야하는 스타일들이나, 페이지가 많아질 시 유지보수성을 고려해 SCSS 사용.
+
+## 🖥️ 작업화면
+![image](https://github.com/user-attachments/assets/67186695-71f8-4834-bc06-09aa71993700)
+![image](https://github.com/user-attachments/assets/acde87bf-4072-41f2-a289-65e45b37fac9)
+![image](https://github.com/user-attachments/assets/3d11c3bc-3bb7-4a55-a815-7a397cfe2d1b)
+![image](https://github.com/user-attachments/assets/212b553c-accc-4be6-9ce7-dd390f1d4d9e)
